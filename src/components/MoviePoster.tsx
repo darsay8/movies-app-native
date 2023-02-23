@@ -1,7 +1,7 @@
 import {useNavigation} from '@react-navigation/core';
 import {CommonActions} from '@react-navigation/native';
 import {View, Text, Image, StyleSheet} from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Movie} from '../interfaces/movieInterface';
 
 interface Props {
@@ -11,14 +11,25 @@ interface Props {
 }
 
 const MoviePoster = ({movie, height = 420, width = 300}: Props) => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-  
+
   return (
-    <TouchableOpacity activeOpacity={0.8}  onPress={() =>
-      navigation.dispatch(CommonActions.navigate({name: 'Detail', params: movie}), )
-    } style={{width, height, marginHorizontal: 2,paddingBottom:20, paddingHorizontal:4}} >
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() =>
+        navigation.dispatch(
+          CommonActions.navigate({name: 'Detail', params: movie}),
+        )
+      }
+      style={{
+        width,
+        height,
+        marginHorizontal: 2,
+        paddingBottom: 20,
+        paddingHorizontal: 4,
+      }}>
       <View style={styles.imageContainer}>
         <Image source={{uri}} style={styles.image} />
       </View>
